@@ -6,7 +6,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 bot = telebot.TeleBot(TOKEN)
 
-groups = []
+groups = {}
 
 
 def send_daily_message():
@@ -39,7 +39,7 @@ def stats(message):
         if len(groups) != 0:
             text = ''
             for i in groups:
-                text += str(i) + '\n'
+                text += str(groups[i]) + '\n'
             bot.send_message(message.chat.id, text)
     else:
         bot.delete_message(message.chat.id, message.message_id)
