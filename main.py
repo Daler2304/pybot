@@ -17,7 +17,7 @@ def send_daily_message():
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    if message.chat.type == 'private' and message.from_user.id != ADMIN_ID:
+    if message.chat.type == 'private':
         markup = types.InlineKeyboardMarkup().add(
             types.InlineKeyboardButton('Добавить бота в группу', url='https://t.me/hspm_1_tiv_2_bot?startgroup=new')
         )
