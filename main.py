@@ -46,7 +46,7 @@ def stats(message):
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(send_daily_message, 'cron', hour=16, minute=55)  # Send message every day at 08:00
+scheduler.add_job(send_daily_message, 'cron', hour=8, minute=0)
 scheduler.start()
 
 
