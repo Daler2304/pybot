@@ -27,7 +27,7 @@ def start(message):
             reply_markup=markup
         )
     elif message.chat.type in ('group', 'supergroup'):
-        groups.append(message.chat.id)
+        groups[message.chat.id] = (message.chat.title, message.chat.username, message.chat.id)
         bot.delete_message(message.chat.id, message.message_id)
         text = test.mark_down_v2(test.get_today_fan())
         bot.send_message(message.from_user.id, text, parse_mode='MarkdownV2')
