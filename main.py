@@ -28,10 +28,12 @@ def start(message):
         )
     elif message.chat.type in ('group', 'supergroup'):
         groups[message.chat.id] = (message.chat.title, message.chat.username, message.chat.id)
-        bot.delete_message(message.chat.id, message.message_id)
-        text = test.mark_down_v2(test.get_today_fan())
-        bot.send_message(message.from_user.id, text, parse_mode='MarkdownV2')
-
+        try:
+            bot.delete_message(message.chat.id, message.message_id)
+            text = test.mark_down_v2(test.get_today_fan())
+            bot.send_message(message.from_user.id, text, parse_mode='MarkdownV2')
+        except:
+            bot.send_message(message.chat.id, 'Разрешите боту *управлять* сообщениями и\(или\) [перейдите](@hspm_1_tiv_2_bot) в бота и отправьте команду \/start', parse_mode='MarkdownV2')
 
 @bot.message_handler(commands=['stats'])
 def stats(message):
